@@ -1,0 +1,8 @@
+[
+     {"category": "nmr", 
+      "name": "nmr_lldltg", 
+      "qqplot": "data/img/INT-WGS-nmr_lldltg-QQplot.html", 
+      "manhattan": "data/img/INT-WGS-nmr_lldltg-manhattan.html"}, 
+     {"category": "nmr", "name": "nmr_xlvldll", "qqplot": "data/img/INT-WGS-nmr_xlvldll-QQplot.html", "manhattan": "data/img/INT-WGS-nmr_xlvldll-manhattan.html"}, {"category": "nmr", "name": "nmr_clafa", "qqplot": "data/img/INT-WGS-nmr_clafa-QQplot.html", "manhattan": "data/img/INT-WGS-nmr_clafa-manhattan.html"}]
+     
+     
