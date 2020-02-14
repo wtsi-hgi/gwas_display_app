@@ -1,3 +1,37 @@
+
+## Step 1
+# Clone this repository
+git clone https://github.com/wtsi-hgi/gwas_display_app.git
+
+## Step 2 
+# Change to the directory
+cd gwas_display
+
+## Step 3
+# Download and install node.js (which includes npm ) for your system 
+https://www.npmjs.com/get-npm
+
+## Step 4
+# Check that you have node and npm installed:
+node -v
+npm -v
+
+## Step 5
+# Install required dependencies for this project 
+npm install 
+
+## Step 6
+# Run app
+npm run start
+
+# Step 7
+The app is running at http://localhost:3000/
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
