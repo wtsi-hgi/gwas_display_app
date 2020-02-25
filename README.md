@@ -14,15 +14,26 @@ https://www.npmjs.com/get-npm
 ## Step 4
 # Check that you have node and npm installed:
 node -v
+
 npm -v
 
 ## Step 5
 # Install required dependencies for this project 
 npm install 
 
+
 ## Step 6
+# Copy the html plots from farm to the local folder gwas_display_app/public/data/img
+scp *.html gwas_display_app/public/data/img/.
+
+## Step 7 Update file metadata to display on the app
+python3 gwas_display_app/src/create_json.py
+
+## Step 8
 # Run app
 npm run start
+
+
 
 # Step 7
 The app is running at http://localhost:3000/
