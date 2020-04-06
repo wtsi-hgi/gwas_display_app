@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import VariantsList from "./VariantsList.js";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 import datajson from "../data/variants_nmr.json";
 
 let variantsjson = JSON.parse(JSON.stringify(datajson));
 
 function VariantsPage(props) {
-  const phenotype = props.phenotype;
   const [variants, setVariants] = useState([]);
 
   const slug = props.match.params.slug; //pulled from the path /variants/slug

@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 function VariantsList(props) {
-
   return (
     <>
-      <table className="table">
+     <div class="table-container"> 
+      <table class="table is-bordered  is-striped is-narrow is-hoverable">
         <thead>
           <tr>
-        
             <th>Locus</th>
             <th>rsID</th>
             <th>REF</th>
@@ -23,14 +21,10 @@ function VariantsList(props) {
           </tr>
         </thead>
         <tbody>
-          {props.variants.map(variant => {
+          {props.variants.map((variant) => {
             return (
-            
               <tr key={variant._id.$oid}>
-                
-                <td>
-                      {variant.locus}
-                </td>
+                <td>{variant.locus}</td>
                 <td>{variant.rsid} </td>
                 <td> {variant.REF} </td>
                 <td> {variant.ALT} </td>
@@ -45,6 +39,7 @@ function VariantsList(props) {
           })}
         </tbody>
       </table>
+      </div>
     </>
   );
 }
@@ -54,9 +49,8 @@ VariantsList.propTypes = {
     PropTypes.shape({
       _id: PropTypes.object.isRequired,
       rsid: PropTypes.string.isRequired,
-      
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default VariantsList;
