@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PhenotypeRow from './PhenotypeRow';
 
 class PhenotypeTable extends React.Component{
     render(){
@@ -26,7 +27,7 @@ class PhenotypeTable extends React.Component{
         return (
            <>
          
-        <table class="table is-hoverable ">
+        <table className="table is-hoverable ">
             <thead>
                 <tr>
                     <th>id</th>

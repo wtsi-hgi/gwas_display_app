@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function VariantsList(props) {
+
   return (
     <>
       <table className="table">
@@ -28,13 +29,7 @@ function VariantsList(props) {
               <tr key={variant._id.$oid}>
                 
                 <td>
-                  {" "}
-                  {
-                    <Link to={"/variants/" + variant.slug}>
-                      {" "}
                       {variant.locus}
-                    </Link>
-                  }
                 </td>
                 <td>{variant.rsid} </td>
                 <td> {variant.REF} </td>

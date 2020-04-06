@@ -1,5 +1,7 @@
 import React from "react";
 import axios from 'axios';
+import SearchBar from './SearchBar';
+import PhenotypeTable from './PhenotypeTable';
 
 class FilterablePhenotypeTable extends React.Component {
     constructor(props){
@@ -52,7 +54,7 @@ handleFilterTextChange(filterText){
 </div>
 </div>
 
-<span class="tag is-primary is-light"> {this.state.projectSelection}</span>
+<span className="tag is-primary is-light"> {this.state.projectSelection}</span>
    
      
 <SearchBar 

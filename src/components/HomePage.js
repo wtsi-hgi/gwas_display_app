@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FilterablePhenotypeTable from "./FilterablePhenotypeTable";
+
 function HomePage() {
   return (
     <div className="jumbotron">
@@ -8,7 +10,7 @@ function HomePage() {
       <h1> Interval GWAS results</h1>
       <p> Interval WGS and WES gwas results web app</p>
       {/* <a href="/about"> About </a> this calls back to the server */}
-      <Link to="/wgs" className="btn btn-primary">
+     {/*} <Link to="/wgs" className="btn btn-primary">
         WGS{" "}
       </Link>{" "}
       <Link to="/wes" className="btn btn-primary">
@@ -17,6 +19,8 @@ function HomePage() {
       <Link to="/variants" className="btn btn-primary">
         Variant Tables{" "}
       </Link>{" "}
+  */}
+      <FilterablePhenotypeTable />
       {/* this uses just client server routing */}
     </div>
   );
