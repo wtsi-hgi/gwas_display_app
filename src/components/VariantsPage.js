@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import VariantsList from "./VariantsList.js";
 import { Link } from "react-router-dom";
-
 import datajson from "../data/variants_nmr.json";
+import datajson2 from "../data/test_variants.json";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
-let variantsjson = JSON.parse(JSON.stringify(datajson));
+
+const variantsjson = JSON.parse(JSON.stringify(datajson));
 
 function VariantsPage(props) {
   const [variants, setVariants] = useState([]);
@@ -18,7 +20,6 @@ function VariantsPage(props) {
         (variant) => variant.phenotype === slug
       );
       setVariants(filtered_variants);
-   
     }
   }, [props.match.params.slug]); //dependency array to re run only when this changes.
 
@@ -32,12 +33,13 @@ function VariantsPage(props) {
   // .catch(err => {});
   //}, []);
 
+
   return (
     <>
       <h2>Variants Table for {props.match.params.slug} </h2>
-      <Link to={"/"}>  Back </Link>
-      <VariantsList variants={variants} />
-      {/*<VariantsList variants={variants} />  */}
+      <Link to={"/"}> Back </Link>
+     
+    <VariantsList variants={variants} /> 
     </>
   );
 }

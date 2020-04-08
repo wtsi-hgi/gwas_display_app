@@ -9,6 +9,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import VariantsPage from "./VariantsPage";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
 function App() {
   //function getPage() {
@@ -20,11 +21,11 @@ function App() {
   return (
     <div className="container-fluid">
       <ToastContainer autoClose={3000} hideProgressBar />
-       <Header /> 
+      <Header />
       <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/variants/:slug" component={VariantsPage} />
-          { /*   <Route path="/about" component={AboutPage} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/variants/:slug" component={VariantsPage} />
+        {/*   <Route path="/about" component={AboutPage} />
         <Route path="/course/:slug" component={ManageCoursePage} />
         <Route path="/course" component={ManageCoursePage} />
         <Redirect from="/about-page" to="/about" />
