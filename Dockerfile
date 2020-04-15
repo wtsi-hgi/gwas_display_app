@@ -8,6 +8,7 @@ RUN npm install --silent
 RUN npm install react-scripts -g --silent
 COPY . /usr/src/app
 RUN npm run build
+RUN node server.js
 
 ### STAGE 2: Production Environment ###
 FROM nginx:1.13.12-alpine
