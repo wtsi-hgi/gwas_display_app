@@ -5,7 +5,7 @@ import App from "./components/App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 render(
-  <Router>
+  <Router  basename={'/gwas'}>
     {" "}
     <App />
   </Router>,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import VariantsList from "./VariantsList.js";
 import { Link } from "react-router-dom";
 import datajson from "../data/variants_nmr.json";
-import datajson2 from "../data/test_variants.json";
+// import datajson2 from "../data/test_variants.json";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
 
