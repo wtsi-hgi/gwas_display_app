@@ -1,7 +1,5 @@
 let whitelist = [
-    "pa10",
-    "pa11",
-    "vvi"
+    "email_address=ca3@sanger.ac.uk"
 ]
 
 
