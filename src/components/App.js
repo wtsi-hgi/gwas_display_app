@@ -18,6 +18,7 @@ function App() {
   //  if (route==="/courses") return <CoursesPage />;
   //  return <HomePage />;
   // }
+  console.log("React Version" + React.version);
   return (
     <div className="container-fluid">
       <ToastContainer autoClose={3000} hideProgressBar />
