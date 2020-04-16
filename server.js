@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-const whitelist = require('./gwas_whitelist')
+const whitelist = require('./whitelist')
 // 
 
 
@@ -19,7 +19,7 @@ function checkUser(req, res, next){
     next();
     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
 } else {
-    return res.send(return res.send("Dear " + user + ", you to not have permission to access this application. Please seek authorization from Darth V.Iyer." ))
+    return res.send("Dear " + user + ", you to not have permission to access this application. Please seek authorization from Darth V.Iyer." )
 }
     
 }
