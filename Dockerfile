@@ -12,6 +12,5 @@ RUN npm run build
 ### STAGE 2: Production Environment ###
 # FROM nginx:1.13.12-alpine
 # COPY --from=build /usr/src/app/build /usr/share/nginx/html
-EXPOSE 3000
 EXPOSE 8080
-CMD ["node", "server.js;"]
+CMD ["node", "server.js"]
