@@ -3,8 +3,9 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
 const whitelist = require('./test_whitelist')
-// 
-
+const db = require('./db');
+const config = require('./config')
+db.connect(config);
 
 app.get('/ping', function (req, res) {
  return res.send('pong');
@@ -23,8 +24,12 @@ function checkUser(req, res, next){
 }
     
 }
+// 
 
 app.use(checkUser);
 app.use('/gwas',express.static(path.join(__dirname, 'build')))
+
+const router = require('./routes');
+app.use('/api', router)
 
 app.listen(process.env.PORT || 8080);
