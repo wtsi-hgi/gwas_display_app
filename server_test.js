@@ -4,7 +4,9 @@ const path = require('path');
 const app = express();
 const whitelist = require('./test_whitelist')
 const db = require('./db');
-const config = require('./config')
+
+let environment = process.env.NODE_ENV || 'development';
+const config = require('./config')(environment)
 db.connect(config);
 
 app.get('/ping', function (req, res) {
@@ -25,6 +27,10 @@ function checkUser(req, res, next){
     
 }
 // 
+
+
+
+
 
 app.use(checkUser);
 app.use('/gwas',express.static(path.join(__dirname, 'build')))

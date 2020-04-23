@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const whitelist = require('./whitelist')
-const router = require('./routes');
 const db = require('./db');
-const config = require('./config')
-
-
+const router = require('./routes');
+let environment = process.env.NODE_ENV || 'development';
+const config = require('./config')(environment);
 
 db.connect(config);
+
 
 app.get('/ping', function (req, res) {
  return res.send('pong');
@@ -30,6 +30,7 @@ function checkUser(req, res, next){
 
 app.use(checkUser);
 app.use('/gwas',express.static(path.join(__dirname, 'build')))
+
 app.use('/api', router)
 
 app.listen(process.env.PORT || 8080);
