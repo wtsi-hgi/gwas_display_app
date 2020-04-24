@@ -31,6 +31,6 @@ function checkUser(req, res, next){
 app.use(checkUser);
 app.use('/gwas',express.static(path.join(__dirname, 'build')))
 
-app.use('/api', router)
+app.use('/gwas/api', router)
 
 app.listen(process.env.PORT || 8080);

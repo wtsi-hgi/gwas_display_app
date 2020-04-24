@@ -12,7 +12,7 @@ class FilterablePhenotypeTable extends React.Component {
             projectSelection: 'WGS',
             phenotypes:[],
         };
-        axios.get('/api/phenotypes').then(
+        axios.get('/gwas/api/phenotypes').then(
             res => {
                 console.log("Response: " + JSON.stringify(res));
                 this.setState({phenotypes: res.data.data})

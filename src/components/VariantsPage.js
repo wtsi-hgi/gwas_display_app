@@ -23,7 +23,7 @@ function VariantsPage(props) {
   useEffect(async () => {
     // <Route path="/course/:slug" component={ManageCoursePage} />
 
-    await axios.get('/api/variant/' + slug).then(res => {
+    await axios.get('/gwas/api/variant/' + slug).then(res => {
         console.log("Response: " + JSON.stringify(res));
         variantsjson = res.data;
       }).catch (err => {console.log("Error fetching variant data: " + err);})
