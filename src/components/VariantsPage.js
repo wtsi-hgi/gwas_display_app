@@ -14,27 +14,24 @@ let variantsjson;
 
 function VariantsPage(props) {
   const [variants, setVariants] = useState([]);
-
-  const slug = props.match.params.slug; //pulled from the path /variants/slug
+  const slug = props.match.params.slug; //pulled from the path /variants/:slug
  
-
-  
-
-  useEffect(async () => {
-    // <Route path="/course/:slug" component={ManageCoursePage} />
-
-    await axios.get('/gwas/api/variant/' + slug).then(res => {
+  async function fetchData() {
+      try {
+        const res = await axios.get('/gwas/api/variant/' + slug);
         console.log("Response: " + JSON.stringify(res));
         variantsjson = res.data;
-      }).catch (err => {console.log("Error fetching variant data: " + err);})
+        setVariants(variantsjson);
+      } catch (e) {
+        console.log("Error fetching variant data: " + e);
+      }
+  }
 
-    if (slug) {
-      const filtered_variants = variantsjson.filter(
-        (variant) => variant.phenotype === slug
-      );
-      console.log("Filetered: " + filtered_variants);
-      setVariants(filtered_variants);
-    }
+  useEffect(() => {
+    // <Route path="/course/:slug" component={ManageCoursePage} />
+      fetchData();
+      
+    
   }, [props.match.params.slug]); //dependency array to re run only when this changes.
 
   //useState(() => {
@@ -52,7 +49,6 @@ function VariantsPage(props) {
     <>
       <h2>Variants Table for {props.match.params.slug} </h2>
       <Link to={"/"}> Back </Link>
-     
     <VariantsList variants={variants} /> 
     </>
   );

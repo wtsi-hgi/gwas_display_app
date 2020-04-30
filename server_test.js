@@ -7,6 +7,7 @@ const db = require('./db');
 
 let environment = process.env.NODE_ENV || 'development';
 const config = require('./config')(environment)
+console.log("Config" + JSON.stringify(config));
 db.connect(config);
 
 app.get('/ping', function (req, res) {
@@ -36,6 +37,6 @@ app.use(checkUser);
 app.use('/gwas',express.static(path.join(__dirname, 'build')))
 
 const router = require('./routes');
-app.use('/api', router)
+app.use('/gwas/api', router)
 
 app.listen(process.env.PORT || 8080);
