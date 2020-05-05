@@ -16,6 +16,10 @@ function Header() {
       <NavLink activeStyle={activeStyle} to="/wes">
         Exomes
       </NavLink>
+      {" | "}
+      <NavLink activeStyle={activeStyle} to="/upload">
+        Upload
+      </NavLink>
     </nav>
   );
 }

@@ -27,7 +27,7 @@ function checkUser(req, res, next){
 }
 
 
-
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(checkUser);
 app.use('/gwas',express.static(path.join(__dirname, 'build')))
 
