@@ -84,17 +84,24 @@ const uploadFile = (req, res) => {
    (async () => {
     const db = await Db.get()
     let Collection = db.collection(datatype)
-    await Collection.deleteMany({}).then(response => {console.log("Response" + response)});
-    await Collection.insertMany(jsonData)
-    .then(response => {
-        console.log('saved to mongo db', response); 
-        res.json(response);
+    try {
+        await Collection.drop()
+    }
+    catch (error){
+        console.log("Error while fetching collection: " + error);
+    }
+
+    const response = await Collection.insertMany(jsonData)
+    return response
+   })()
+   .then(response => {
+        console.log("Upload Response: ", response); 
+        res.status(200).json(response); 
     })
-    .catch(error => {
-        console.log('error in saving to mongo db', error); 
-        res.json(error);
-    })
-   })();
+   .catch(error => {
+        console.log("Error while uploading file " , error); 
+        res.status(500).json(error);
+    });
 }
    
 

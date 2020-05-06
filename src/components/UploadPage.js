@@ -36,7 +36,7 @@ class UploadPage extends React.Component {
 
   
    submitData(contentType, data, datatype){
-        console.log("submitData dalled")
+       
         axios({
             url: `/gwas/api/upload/`+datatype,
             method: 'POST',
@@ -44,9 +44,14 @@ class UploadPage extends React.Component {
             headers: {
                 'Content-Type': contentType
             }}).then(response => {
-            console.log(response.data)
+            console.log("Received ", response)
+            if (response.status == 200){
+                alert(`Upload successful`);
+            } else {
+                alert(`There was a problem. Upload failed`);
+            }
         }).catch((error) => {
-            console.log("error:" + error);
+            alert(`There was a problem. Upload failed. ` + error);
         })
     }
 
