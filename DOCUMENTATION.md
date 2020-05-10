@@ -64,7 +64,9 @@ let whitelist = [
 
 The files containing the plots are supposed to be within the `public/data/img/` directory of the app from which they are served. This directly is currently not hosted in the github repo for security reasons. Instead, the direcory is baked into the `gwas-frontend` docker image and has to be manually transfered if new data comes in. This would require transfering the files to the docker node and then transfering them from the node to the running container with the `docker cp` command.  
 
-However, this is not optimal as it greatly increases both the size of the image and the ugliness of finding the right node and then ssh into the container. A better way would be to keep the images on the host and mount them into the container as a volume. 
+However, this is not optimal as it greatly increases both the size of the image and the ugliness of finding the right node and then ssh into the container. A better way would be to keep the images on the host and mount them into the container as a volume. Keep in mind that the service would need to be redeployed everytime new data comes in for it to be mounted.
+
+This is done in the latest version has 
 
 
 
@@ -160,7 +162,12 @@ configs:
 
 **MongoDB**
 
-Containers within a swarm can be replicated, allocated to a different host, shut down, restarted etc. Hence they are not really defined for persisting state, as is required by a db.  One workaround to persisting state is to create a volume and bind mount it to a container. But for this to work, the data stored in the volume must be in the same node as where the container is deployed. Hence, sometimes it is useful to define constraints in the compose file to restrict the container to a particular node. We do this, for example, in the db container for gwas app as shown:
+Containers within a swarm can be replicated, allocated to a different host, shut down, restarted etc. Hence they are not really defined for persisting state, as is required by a db.  
+
+> The image defined by your Dockerfile should generate containers that are as ephemeral as possible. By “ephemeral”, we mean that the container can be stopped and destroyed, then rebuilt and replaced with an absolute minimum set up and configuration.
+
+
+One workaround to persisting state is to create a volume and bind mount it to a container. But for this to work, the data stored in the volume must be in the same node as where the container is deployed. Hence, sometimes it is useful to define constraints in the compose file to restrict the container to a particular node. We do this, for example, in the db container for gwas app as shown:
 
 ```
   gwas-db:
