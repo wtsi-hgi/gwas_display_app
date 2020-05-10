@@ -3,9 +3,9 @@
 
 # Architecture
 
-Both the frontend (static React app) and backend are served by the same Express server (container name: gwas-frontend) . This server communicates with a MongoDB Server hosted separately (container name: gwas-db).[^mongo]
+Both the frontend (static React app) and backend are served by the same Express server (container name: gwas-frontend) . This server communicates with a MongoDB Server hosted separately (container name: gwas-db).
 
-[^mongo]: The configuration for the Mongodb database selecs for the right address based on the environmental variable `process.env.NODE_ENV`, which is set to `production` with the `environment` option in the docker-compose file (`environment:  NODE_ENV=production`)
+The configuration for the Mongodb database selecs for the right address based on the environmental variable `process.env.NODE_ENV`, which is set to `production` with the `environment` option in the docker-compose file (`environment:  NODE_ENV=production`)
 
 - Reads the `X-Forwarded-User` request header and checks it against the list of whitelisted users obtained from the mounted `gwas_whitelist` file.  If the check passes, it proceeds with route handling in the next steps.
 - The routes of the form  `/gwas/api` (e.g. `gwas/api/phenotypes`) are handled by route handlers (pieces of code which contain business logic and invoke queries on database)
