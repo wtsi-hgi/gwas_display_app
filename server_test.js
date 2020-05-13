@@ -33,7 +33,7 @@ function checkUser(req, res, next){
 
 
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(checkUser);
+// app.use(checkUser);
 
 
 const router = require('./routes');

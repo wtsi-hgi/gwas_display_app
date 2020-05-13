@@ -33,7 +33,7 @@ for (var row of newData){
     for (const [key, value] of Object.entries(row)){
         line = line + value + '\t'
     }
-
+    line = line.slice(0, -1) // Remove last tab
     line = line + "\n"
 
     fs.appendFile(destination, line, (err) => {

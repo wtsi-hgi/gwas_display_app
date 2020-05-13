@@ -46,9 +46,9 @@ class UploadPage extends React.Component {
             }}).then(response => {
             console.log("Received ", response)
             if (response.status == 200){
-                alert(`Upload successful`);
+                alert(`Upload successful ` + JSON.stringify(response.data));
             } else {
-                alert(`There was a problem. Upload failed`);
+                alert(`There was a problem. Upload failed` + response);
             }
         }).catch((error) => {
             alert(`There was a problem. Upload failed. ` + error);
@@ -73,8 +73,17 @@ class UploadPage extends React.Component {
         const fr = new FileReader();
         fr.onload = function(e) {
              var text = fr.result;
-             const jsonData = JSON.parse(tsvJSON(text))
-             console.log(jsonData)
+             let jsonData;
+             if (datatype == "variants"){
+                jsonData = JSON.parse(tsvJSON(text))
+              } 
+
+              if (datatype == "phenotypes"){
+                jsonData = JSON.parse(text);
+              } 
+             
+             console.log("JSON: ", jsonData )
+             // console.log(jsonData)
              submitData("application/json", jsonData, datatype)
 
         }

@@ -1,7 +1,7 @@
 
 
-const MongoClient = require("mongodb").MongoClient;
-
+// const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongoose');
 
 
 var _db;
@@ -13,18 +13,21 @@ var _db;
     let port = config.port;
     let dbName = config.dbName;
 
-    let uri = "mongodb://" + host + ":" + port;
+    let uri = "mongodb://" + host + ":" + port + "/" + dbName;
 
-    let callback = (error, client) => {
+    let callback = (error, connection) => {
         if (error){
             throw error;
         }
         console.log("Connection to Mongodb established")
-       _db = client.db(dbName);
+       _db = connection.db;
+       // _db = connection.db(dbName);
        // console.log("Db returned:" + _db);
     }
-    MongoClient.connect(uri, { useUnifiedTopology: true }, callback)
+    MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, callback)
 }
+
+
 
 async function get(){
     if (_db){

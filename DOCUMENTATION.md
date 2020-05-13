@@ -64,10 +64,7 @@ let whitelist = [
 
 The files containing the plots are supposed to be within the `public/data/img/` directory of the app from which they are served. This directly is currently not hosted in the github repo for security reasons. Instead, the direcory is baked into the `gwas-frontend` docker image and has to be manually transfered if new data comes in. This would require transfering the files to the docker node and then transfering them from the node to the running container with the `docker cp` command.  
 
-However, this is not optimal as it greatly increases both the size of the image and the ugliness of finding the right node and then ssh into the container. A better way would be to keep the images on the host and mount them into the container as a volume. Keep in mind that the service would need to be redeployed everytime new data comes in for it to be mounted.
-
-This is done in the latest version has 
-
+However, this is not optimal as it greatly increases both the size of the image and the ugliness of finding the right node and then ssh into the container. A better way would be to keep the images on the host and mount them into the container as a volume. Keep in mind that the service would need to be redeployed everytime new data comes in for it to be mounted. UPDATE: This is done in the latest version of the image (mercury/gwasplots:1.4). 
 
 
 
