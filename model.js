@@ -28,7 +28,7 @@ const variantSchema = new Schema({
         "se": {type: Number},
         "p":{type: Number},
         "phenotype": {type: String},
-        "locus_REF_ALT_nmr_phenotypes": {type: String, unique: true, required: true},
+        "locus_REF_ALT_phenotype": {type: String, unique: true, required: true},
     }, {collection: "variants"});
 
 

@@ -43,7 +43,10 @@ class UploadPage extends React.Component {
             data: data,
             headers: {
                 'Content-Type': contentType
-            }}).then(response => {
+            },
+            'maxContentLength': Infinity,
+            'maxBodyLength': Infinity
+          }).then(response => {
             console.log("Received ", response)
             if (response.status == 200){
                 alert(`Upload successful ` + JSON.stringify(response.data));

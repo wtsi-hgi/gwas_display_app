@@ -45,6 +45,27 @@ const getVariant= (req, res) => {
     
 }
 
+
+const dropCollection = (req, res) => {
+
+   const datatype = req.params.datatype;
+   // console.log(jsonData);
+   (async () => {
+    const db = await Db.get()
+
+    let Collection = db.collection(datatype)
+    const response = await Collection.drop()
+    return response
+   })()
+    .then(data => {
+        res.status(200).json(data);
+    }).catch(err => {
+        console.log("Error" + err);
+        res.status(400).json(err);
+    })
+}
+
+
 // IN CASE FILE UPLOAD IS NEEDED
 // var multer = require('multer')
 // var storage = multer.diskStorage({
@@ -136,6 +157,7 @@ const uploadFile = (req, res) => {
 module.exports = {
     getPhenotypes,
     getVariant,
-    uploadFile
+    uploadFile,
+    dropCollection
 }
 
