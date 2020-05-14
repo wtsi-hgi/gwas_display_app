@@ -5,7 +5,6 @@ const Schema = Mongoose.Schema;
 
 
 const phenotypeSchema = new Schema({
-
     id: {type: Number},
     project: {type: String},
     category: {type: String},
