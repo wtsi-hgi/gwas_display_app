@@ -8,7 +8,7 @@ const phenotypeSchema = new Schema({
     id: {type: Number},
     project: {type: String},
     category: {type: String},
-    name: {type: String, unique: true, required: true},
+    name: {type: String, unique: true, required: true, index: true},
     qqplot: {type: String},
     manhattan: {type: String}
 }, { collection : 'phenotypes' });

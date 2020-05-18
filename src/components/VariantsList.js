@@ -28,29 +28,63 @@ function VariantsList(props) {
       text: "ALT",
       sort: true,
     },
-    {
-      dataField: "n",
-      text: "n",
-      sort: true,
-    },
-    {
+      {
       dataField: "AF",
       text: "AF",
       sort: true,
     },
+
     {
       dataField: "beta",
-      text: "beta",
+      text: "Beta",
+      sort: true,
+    },
+
+    {
+      dataField: "standard_error",
+      text: "Standard error",
+      sort: true,
+    },
+
+    {
+      dataField: "p_value",
+      text: "p ",
       sort: true,
     },
     {
-      dataField: "se",
-      text: "standard error",
+      dataField: "AC",
+      text: "AC",
       sort: true,
     },
+
     {
-      dataField: "p",
-      text: "p-value",
+      dataField: "AN",
+      text: "AN",
+      sort: true,
+    },
+
+
+    {
+      dataField: "n_HomRef",
+      text: "n_HomRef",
+      sort: true,
+    },
+
+    {
+      dataField: "n_Het",
+      text: "n_Het",
+      sort: true,
+    },
+
+    {
+      dataField: "n_HomAlt",
+      text: "n_HomAlt",
+      sort: true,
+    },
+
+     {
+      dataField: "n_pheno",
+      text: "n_pheno",
       sort: true,
     },
     {
@@ -59,6 +93,9 @@ function VariantsList(props) {
     },
   ];
 
+ 
+          
+
   return (
     <>
       <div className="Table">
@@ -66,9 +103,11 @@ function VariantsList(props) {
           bootstrap4
           headerClasses="thead-dark"
           striped
-          hover
           condensed
+          classes = "table-responsive w-auto"
+          hover
           keyField="p"
+          style="word-wrap: break-word;min-width: 160px;max-width: 160px;"
           data={props.variants}
           columns={columns}
           filter={ filterFactory()}
@@ -76,18 +115,23 @@ function VariantsList(props) {
       </div>
       {/* 
       <div className="table-container">
-        <table class="table is-bordered  is-striped is-narrow is-hoverable is-fullwidth">
+        <table class="table is-bordered  is-striped is-narrow is-hoverable is-fullwidth .table-responsive">
           <thead>
             <tr>
               <th>Locus</th>
               <th>rsID</th>
               <th>REF</th>
               <th>ALT</th>
-              <th>n</th>
               <th>AF</th>
               <th>beta</th>
               <th>Standard error</th>
-              <th>p</th>
+              <th>p_value </th>
+              <th>AC</th>
+              <th>AN</th>
+              <th>n_HomRef</th>
+              <th>n_Het</th>
+              <th>n_HomAlt </th>
+              <th>n_pheno </th>
               <th>Phenotype</th>
             </tr>
           </thead>
@@ -95,15 +139,20 @@ function VariantsList(props) {
             {props.variants.map((variant) => {
               return (
                 <tr key={variant._id.$oid}>
-                  <td>{variant.locus}</td>
+                 <td>{variant.locus}</td>
                   <td>{variant.rsid} </td>
                   <td> {variant.REF} </td>
                   <td> {variant.ALT} </td>
-                  <td> {variant.n} </td>
                   <td> {variant.AF} </td>
                   <td> {variant.beta} </td>
-                  <td> {variant.se} </td>
-                  <td> {variant.p} </td>
+                  <td> {variant.standard_error } </td>
+                  <td> {variant.p_value } </td>
+                  <td> {variant.AC} </td>
+                  <td> {variant.AN} </td>
+                  <td> {variant.n_HomRef } </td>
+                  <td> {variant.n_Het } </td>
+                  <td> {variant.n_HomAlt} </td>
+                  <td> {variant.n_pheno} </td>
                   <td> {variant.phenotype} </td>
                 </tr>
               );
