@@ -1,6 +1,6 @@
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
-
+Mongoose.set('useCreateIndex', true)
 
 
 
@@ -36,7 +36,7 @@ const variantSchema = new Schema({
 
 
 let phenotypes = Mongoose.model('phenotypes', phenotypeSchema);
-let variants = Mongoose.model('Variant', variantSchema);
+let variants = Mongoose.model('variants', variantSchema);
 
 
 

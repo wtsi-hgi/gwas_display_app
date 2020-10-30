@@ -7,14 +7,21 @@ let config = require("./upload_config")
 // require('axios-debug-log');
 // fs.readFile(file)
 
+// axios.interceptors.request.use(request => {
+//   console.log('Starting Request', JSON.stringify(request, null, 2))
+//   return request
+// })
+
+// axios.interceptors.response.use(response => {
+//   console.log('Response:', JSON.stringify(response, null, 2))
+//   return response
+// })
 
 
 function tsvToJSON(tsv){
  
   var lines=tsv.split("\n");
- 
   var result = [];
- 
   var headers=lines[0].split("\t");
  
   for(var i=1;i<lines.length;i++){

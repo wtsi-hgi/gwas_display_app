@@ -2,6 +2,7 @@
   "name": "gwas_display_app",
   "version": "0.1.0",
   "private": "true",
+  "proxy": "http://localhost:8080/",
   "homepage": ".",
   "dependencies": {
     "@material-ui/core": "^4.9.12",
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
+    "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -32,6 +34,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-toastify": "^5.5.0",
+    "request-stats": "^3.0.0",
     "validator": "^13.0.0"
   },
   "scripts": {

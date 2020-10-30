@@ -2,7 +2,7 @@
 
 #data
 /public/data/img
-/gwas data
+gwas_data
 # dependencies
 /node_modules
 /.pnp

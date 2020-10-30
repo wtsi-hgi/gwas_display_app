@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+
 import {tsvJSON} from './common/utils.js'
 
 
@@ -24,7 +25,7 @@ class UploadPage extends React.Component {
 
 
 
- onFileInputChangeHandler(event){
+    onFileInputChangeHandler(event){
         
         console.log(event.target.files[0])
         // document.getElementById('inputUploadButton').click();
@@ -36,7 +37,8 @@ class UploadPage extends React.Component {
 
   
    submitData(contentType, data, datatype){
-       
+        console.log("Posting JSON: ", data )
+
         axios({
             url: `/gwas/api/upload/`+datatype,
             method: 'POST',
@@ -77,6 +79,8 @@ class UploadPage extends React.Component {
         fr.onload = function(e) {
              var text = fr.result;
              let jsonData;
+             
+             // Because variant files are tsv files
              if (datatype == "variants"){
                 jsonData = JSON.parse(tsvJSON(text))
               } 
@@ -85,8 +89,7 @@ class UploadPage extends React.Component {
                 jsonData = JSON.parse(text);
               } 
              
-             console.log("JSON: ", jsonData )
-             // console.log(jsonData)
+             
              submitData("application/json", jsonData, datatype)
 
         }
@@ -100,7 +103,7 @@ class UploadPage extends React.Component {
 
    }
 
-render() {
+  render() {
   return (
     <div>
     <div className="box">

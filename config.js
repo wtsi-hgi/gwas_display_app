@@ -11,7 +11,7 @@ let setConfig = (environment) => {
         port: 27017,
         dbName: "gwasdb"
     }
-    console.log("Config: " + JSON.stringify(config));
+    
     return config;
 }
 

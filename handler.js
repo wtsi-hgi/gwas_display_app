@@ -1,7 +1,7 @@
 
 const Db = require('./db')
 const model = require('./model')
-// model.
+
 
 const getPhenotypes = (req, res) => {
  
@@ -10,7 +10,6 @@ const getPhenotypes = (req, res) => {
         let queryParams =   {};
         const db = await Db.get();
         phenotypes = await db.collection(collection).find(queryParams).toArray(); 
-
         return phenotypes;
     })()
     .then(data => {
@@ -30,10 +29,7 @@ const getVariant= (req, res) => {
         let collection = "variants";
         let queryParams = {phenotype: req.params.slug};
         const db = await Db.get();
-        // console.log("Db inside:" + db);
         variants = await db.collection(collection).find(queryParams).toArray(); 
-        // console.log("phenotypes: " + JSON.stringify(phenotypes));
-
         return variants;
     })()
     .then(data => {
@@ -49,7 +45,6 @@ const getVariant= (req, res) => {
 const dropCollection = (req, res) => {
 
    const datatype = req.params.datatype;
-   // console.log(jsonData);
    (async () => {
     const db = await Db.get()
 
@@ -102,35 +97,34 @@ const uploadFile = (req, res) => {
 
    const jsonData = req.body;
    const datatype = req.params.datatype;
-   // console.log(jsonData);
+
    (async () => {
-    const db = await Db.get()
+        const db = await Db.get()
+        let Collection = db.collection(datatype)
+        
+/**    let Collection = model[datatype]
+    try {
+        await Collection.drop()
+    }
+    catch (error){
+        console.log("Error while fetching collection: " + error);
+    }
 
-    let Collection = db.collection(datatype)
-    // let Collection = model[datatype]
-    // try {
-    //     await Collection.drop()
-    // }
-    // catch (error){
-    //     console.log("Error while fetching collection: " + error);
-    // }
+    let cb = function(err,result) {
+        if (result.hasWriteErrors()) {
+          // Log something just for the sake of it
+          console.log('Has Write Errors:');
+          log(result.getWriteErrors());
 
-    // let cb = function(err,result) {
-    //     if (result.hasWriteErrors()) {
-    //       // Log something just for the sake of it
-    //       console.log('Has Write Errors:');
-    //       log(result.getWriteErrors());
+          // Check to see if something else other than a duplicate key, then throw
+          if (result.getWriteErrors().some( error => error.code != 11000 ))
+            throw err;
+        }
+    }**/
 
-    //       // Check to see if something else other than a duplicate key, then throw
-    //       if (result.getWriteErrors().some( error => error.code != 11000 ))
-    //         throw err;
-    //     }
-    // }
-
-
-    console.log("jsonData " , jsonData)
-    const response = await Collection.insertMany(jsonData, { ordered: false })
-    return response
+        console.log("jsonData " , jsonData)
+        const response = await Collection.insertMany(jsonData, { ordered: false })
+        return response
    })()
    .then(response => {
         console.log("Upload Response: ", response); 
@@ -143,7 +137,7 @@ const uploadFile = (req, res) => {
             // for (error in wErrors){
             //     console.log("this: ", error)
             // }
-            res.status(200).json("The file contained  duplicate entries. Non-duplicate entries have been inserted. " + "Inserted: " + error.result.nInserted + " Error: " + error.result.getWriteErrors()[0].errmsg );
+            res.status(200).json("The file contained duplicate entries. Non-duplicate entries have been inserted. " + "Inserted: " + error.result.nInserted + " Error: " + error.result.getWriteErrors()[0].errmsg );
         } else {
             res.status(500).json(error);
         }
