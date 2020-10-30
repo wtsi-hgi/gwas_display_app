@@ -26,7 +26,6 @@ var _db;
 
 async function get(){
     if (_db){
-        console.log("Return db")
         return _db
     } else {
         const config = require('./config');

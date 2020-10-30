@@ -15,13 +15,13 @@ services:
       - type: bind
         source: /home/ubuntu/img 
         target: /usr/src/app/build/data/img
+      - type: bind
+        source: /home/ubuntu/gwas_whitelist.js 
+        target: /usr/src/app/whitelist.js
     ports:
       - "3001:8080"
     environment:
       - NODE_ENV=production
-    configs:
-      - source: gwas_whitelist
-        target: /usr/src/app/whitelist.js
     command: "node server.js"
     depends_on:
       - gwas-db
@@ -34,7 +34,5 @@ volumes:
   gwasdb:
     driver: local
  
-configs:
-   gwas_whitelist:
-      file: gwas_whitelist.js
+
 
