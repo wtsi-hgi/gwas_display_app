@@ -1,0 +1,47 @@
+  
+version: '3.5'
+
+# Compose has commands for managing the whole lifecycle of your application:
+
+# Start, stop, and rebuild services
+# View the status of running services
+# Stream the log output of running services
+# Run a one-off command on a service
+
+services:
+  gwas-frontend:
+    image: mercury/gwasplots:1.8
+    volumes:
+      - type: bind
+        source: /home/ubuntu/img 
+        target: /usr/src/app/build/data/img
+    ports:
+      - "3001:8080"
+    environment:
+      - NODE_ENV=production
+    configs:
+      - source: gwas_whitelist
+        target: /usr/src/app/whitelist.js
+    command: "node server.js"
+    depends_on:
+      - gwas-db
+    # deploy:
+    #   placement:
+    #     constraints:
+    #       - "node.role==manager"
+  gwas-db:
+    image: mongo:bionic
+    volumes:
+      - gwasdb:/data/db
+    deploy:
+      placement:
+        constraints:
+
+volumes:
+  gwasdb:
+    driver: local
+ 
+configs:
+   gwas_whitelist:
+      file: gwas_whitelist.js
+
