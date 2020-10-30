@@ -25,17 +25,10 @@ services:
     command: "node server.js"
     depends_on:
       - gwas-db
-    # deploy:
-    #   placement:
-    #     constraints:
-    #       - "node.role==manager"
   gwas-db:
     image: mongo:bionic
     volumes:
       - gwasdb:/data/db
-    deploy:
-      placement:
-        constraints:
 
 volumes:
   gwasdb:
