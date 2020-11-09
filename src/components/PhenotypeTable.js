@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PhenotypeRow from './PhenotypeRow';
 import BootstrapTable from "react-bootstrap-table-next";
-import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
+import "bootstrap/dist/css/bootstrap.min.css";
 class PhenotypeTable extends React.Component{
     render(){
        /* const columns = [
@@ -31,17 +34,11 @@ class PhenotypeTable extends React.Component{
                 sort: true,
               },
         ] */
-        const filterText =this.props.filterText;
-        const project = this.props.project;
+        // const filterText =this.props.filterText;
+        // const project = this.props.project;
         const rows = [];
 
         this.props.phenos.forEach( (phenotype) => {
-            if(phenotype.project !== project){
-                return;
-            }
-            if (phenotype.name.indexOf(filterText) === -1){
-                return;
-            }
             
                 rows.push(
                     <PhenotypeRow phenotype={phenotype}
@@ -67,8 +64,8 @@ class PhenotypeTable extends React.Component{
         />
         */}
 
-
-
+      
+         
 
 
         <table className="table is-hoverable ">
